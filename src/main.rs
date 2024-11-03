@@ -14,7 +14,7 @@ fn real_main() -> i32 {
         return 1;
     }
 
-    let filename = std::path::Path::new(&*args[1]);
+    let filename = std::path::Path::new(&args[1]);
     let file = fs::File::open(&filename).unwrap();
     let mut archive = zip::ZipArchive::new(file).unwrap();
 
@@ -36,7 +36,7 @@ fn real_main() -> i32 {
             fs::create_dir_all(&outpath).unwrap();
         } else {
             println!(
-                "File {} extracted to \"{}\" ({} bytes)",
+                "File {} being extracted to \"{}\" ({} bytes)",
                 i,
                 outpath.display(),
                 file.size()
